@@ -2,8 +2,6 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5148693.svg)](https://doi.org/10.5281/zenodo.5148693)
 
-<<<<<<< HEAD
-=======
 1117 Russian cities with population estimates (as of January 1, 2020) and geographic coordinates.
 
 ## Files and columns
@@ -11,13 +9,13 @@
 1. towns.csv:
 
 - `city_name`
-- `population` - Rosstat estimate, thousand people, as of 1.1.2020
+- `population` - population Rosstat estimate, thousand people, as of 1.1.2020
 - `region_name` - subnational region (oblast, republic or krai)
 
 To be added (via dadata.ru and OSM):
 
-- `lat,lon` - geographic coordinates (from OSM)
-- `federal_district`, eg "Центральный"
+- `lat,lon` - city geographic coordinates (from OSM)
+- `federal_district`, eg `Центральный`
 - `region_iso_code` - [ISO 3166 code](https://en.wikipedia.org/wiki/ISO_3166-2:RU), eg `RU-VLD`
 - `fias_id` - `код ФИАС`
 - `kladr_id` - `код КЛАДР` (depreciated)
@@ -37,4 +35,3 @@ To be added (via dadata.ru and OSM):
 - `Ханты-Мансийский` and `Ямало-Ненецкий` autonomous regions excluded to avoid duplication
   (parts of `Тюменская область`).
 - Several notable towns are classified as administrative part of larger cities (eg `Сестрорецк` is a municpality at  `Санкт-Петербург`) and not reported in this dataset.
->>>>>>> 4e5c6387e0bfcc85c788cffe8368a4605d63e00e
