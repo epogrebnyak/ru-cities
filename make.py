@@ -21,8 +21,12 @@ df["lon"] = None
 
 #%%
 # create regions.csv
+import csv
 df[["region_name"]].drop_duplicates().sort_values("region_name").to_csv(
-    "regions.csv", header=False, index=False
+    "regions.csv", 
+    header=False, 
+    index=False,
+    quoting=csv.QUOTE_ALL
 )
 
 # %%
