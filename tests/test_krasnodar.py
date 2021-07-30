@@ -29,8 +29,8 @@ df = pd.read_csv(base / "towns.csv")
 #%%
 # TODO: переделать в тест
 def test_df_fornull():
-  assert len(df[df.population.isna()]) == 0
-  assert len(df[df.population == 0]) == 0
+    assert len(df[df.population.isna()]) == 0
+    assert len(df[df.population == 0]) == 0
 
 
 #%%
