@@ -10,13 +10,13 @@
 - `population` - Rosstat estimate, thousand people, as of 1.1.2020
 - `region_name` - subnational region (oblast, republic or krai)
 
-To be added:
+To be added (via dadata.ru and OSM):
 
-- `lat,lon` - geographic coordinates (OSM)
+- `lat,lon` - geographic coordinates (from OSM)
 - `federal_district`, eg "Центральный"
 - `region_iso_code` - [ISO 3166 code](https://en.wikipedia.org/wiki/ISO_3166-2:RU), eg `RU-VLD`
-- `fias_id` - код ФИАС
-- `kladr_id` - код КЛАДР
+- `fias_id` - `код ФИАС`
+- `kladr_id` - `код КЛАДР` (depreciated)
 - `place_id` - OpenStreetMap (OSM) identifier
 
 2. regions.csv - list of Russian Federation regions
