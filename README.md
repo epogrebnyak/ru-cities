@@ -12,9 +12,9 @@
 
 To be added:
 
-- `lat,lon` - geographic coordinates
+- `lat,lon` - geographic coordinates (OSM)
 - `federal_district`, eg "Центральный"
-- `region_iso_code` - eg `RU-VLD`
+- `region_iso_code` - [ISO 3166 code](https://en.wikipedia.org/wiki/ISO_3166-2:RU), eg `RU-VLD`
 - `fias_id` - код ФИАС
 - `kladr_id` - код КЛАДР
 - `place_id` - OpenStreetMap (OSM) identifier
