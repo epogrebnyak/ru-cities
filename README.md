@@ -1,6 +1,6 @@
 # ru-cities
 
-1117 Russian cities by region, with city population (as of 2020-01-01) and city center coordinates.
+1117 Russian cities, with population estimates (as of 2020-01-01) and city center geographic coordinates.
 
 ## Files and columns
 
