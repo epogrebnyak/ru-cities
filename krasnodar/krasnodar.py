@@ -1,6 +1,4 @@
-#%%
 import re
-from os import kill
 from pathlib import Path
 
 import requests
@@ -141,9 +139,6 @@ def add_after():
     for k, vs in supplement_dict.items():
         for v in vs:
             yield v[0], v[1], k
-
-
-#%%
 
 
 def change(city: str):

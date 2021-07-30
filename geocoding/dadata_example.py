@@ -1,6 +1,6 @@
 #%%
 import requests_cache
-#requests_cache.install_cache()
+requests_cache.install_cache()
 
 from dadata import Dadata
 
