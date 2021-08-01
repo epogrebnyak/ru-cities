@@ -4,13 +4,17 @@
 
 1117 Russian cities with population estimates (as of January 1, 2020) and geographic coordinates.
 
+## How to use
+
+
+
 ## Files and columns
 
 1. towns.csv:
 
 - `city_name`
-- `population` - population Rosstat estimate, thousand people, as of 1.1.2020
-- `region_name` - subnational region (oblast, republic or krai)
+- `population` - city population, thousand people, Rosstat estimate as of 1.1.2020
+- `region_name` - subnational region (oblast, republic, krai or AO)
 
 To be added (via dadata.ru and OSM):
 
@@ -30,11 +34,35 @@ To be added (via dadata.ru and OSM):
 
 ## Comments
 
+#### City groups
+
+- We suppressed letter "ё" city names - we have `Орел`, but not `Орёл`. This affected:
+  - `Белоозёрский`
+  - `Королёв`
+  - `Ликино-Дулёво`
+  - `Озёры`
+  - `Щёлково`
+  - `Орёл`
+
+- `Ханты-Мансийский` and `Ямало-Ненецкий` autonomous regions excluded to avoid duplication as parts of `Тюменская область`.
+
+- Several notable towns are classified as administrative part of larger cities (`Сестрорецк` is a municpality at  Saint-Petersburg, `Щербинка` part of Moscow). They are not and not reported in this dataset.
+
+#### By individual city
+
 - `Белоозерский` not found in Rosstat publication, but [should be considered a city as of 1.1.2020](https://github.com/epogrebnyak/ru-cities/issues/5#issuecomment-886179980)
+
 - `Дмитриев` and `Дмитриев-Льговский` are the same city.
-- `Ханты-Мансийский` and `Ямало-Ненецкий` autonomous regions excluded to avoid duplication
-  (parts of `Тюменская область`).
-- Several notable towns are classified as administrative part of larger cities (eg `Сестрорецк` is a municpality at  `Санкт-Петербург`) and not reported in this dataset.
+
+
+## Next
+
+- Maybe we should have `city_alt_name` for cases where there are two variants of a city name 
+- Restore `Ханты-Мансийский` and `Ямало-Ненецкий` АО
+- Compare OSM and dadata outputs (distances form centers)
+- Merge OSM `place_id` to dataset 
+- Rename `towns.csv` to `cities.csv`
+- Draw a map of Russian towns
 
 ## Tests
 
@@ -42,3 +70,5 @@ To be added (via dadata.ru and OSM):
 poetry install
 poetry run python -m pytest
 ```
+
+## How to replicate

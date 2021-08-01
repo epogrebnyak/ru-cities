@@ -1,4 +1,4 @@
-#%%
+# %%
 
 import time
 from OSMPythonTools.nominatim import Nominatim
@@ -6,19 +6,17 @@ from OSMPythonTools.nominatim import Nominatim
 nominatim = Nominatim()
 
 
-def make_string(city, region):
-    if region:
-        city += ", " + region
-    return city + ", Россия"
-
-
 def is_town(x):
-    return x["type"] in ["city", "town"]
+    return x["type"] in ["city", "town", "administrative"]
+
+
+def query(s):
+    return nominatim.query(s).toJSON()
 
 
 def get_city_jsons(city, region):
-    xs = nominatim.query(make_string(city, region))
-    return [x for x in xs.toJSON() if is_town(x)]
+    xs = query(city + " "  + region)
+    return [x for x in xs if is_town(x)]
 
 
 def one_json(js):
@@ -38,6 +36,9 @@ def osm(city, region=""):
 
 #%%
 if __name__ == "__main__":
+
+    # %%
+    assert osm("Ноябрьск, Тюменская область") == {'place_id': None, 'lat': None, 'lon': None}
     # %%
     assert osm("Наро-Фоминск") == {
         "place_id": 258768837,
@@ -53,8 +54,7 @@ if __name__ == "__main__":
     }
 
     # %%
-    ys = nominatim.query("Советск, Россия")
-    # %%
+    # ys = nominatim.query("Советск, Россия")
     assert [
         y["display_name"] for y in ys.toJSON() if y["type"] in ["city", "town"]
     ] == [y["display_name"] for y in ys.toJSON() if y["type"] in ["city", "town"]]
@@ -64,6 +64,7 @@ if __name__ == "__main__":
         "Советск, Советский район, Кировская область, Приволжский федеральный округ, 613341, Россия",
     ]
     # %%
-    zs = nominatim.query("Сестрорецк, Россия")
+    # zs = nominatim.query("Сестрорецк, Россия")
+    assert "Санкт-Петербург" in nominatim.query("Сестрорецк, Россия").toJSON()[0]['display_name']
 
     # %%

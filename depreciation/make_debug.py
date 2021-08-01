@@ -5,11 +5,10 @@ from krasnodar.main import (
     extract,
     n_cities,
     process,
-    yield_full_population,
 )
 
 # %%
-# rar folder is populated with rar/get.sh
+# NOTE: rar folder is populated with rar/get.sh
 if False:
     full_pop = []
     for path in docx_files("rar"):
