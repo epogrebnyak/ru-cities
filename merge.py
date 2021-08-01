@@ -1,7 +1,7 @@
 # %%
 import pandas as pd
 
-df = pd.read_csv("towns.csv")
+df = pd.read_csv("towns.csv")["city population region_name".split()]
 cf = pd.read_csv("coord_dadata.csv")
 # %%
 
@@ -38,8 +38,16 @@ cols = [
 df2 = df.merge(
     cf, left_on=["city", "region_name"], right_on=["query_city", "query_region"]
 )[cols].rename(columns=dict(geo_lat="lat", geo_lon="lon", city_x="city"))
-df2
+print(df2.columns)
 
+# %%
+# Fix Нарьян-Мар 
+ix = df2[df2.city == "Нарьян-Мар"].index[0]
+df2.loc[ix, "lat"] = 67.63777777777779
+df2.loc[ix, "lon"] = 53.00666666666667
+df2.loc[ix]
+
+# %%
 df2.sort_values(["region_name", "city"]).to_csv("towns.csv", index=False)
 print("Overwritten towns.csv")
 
