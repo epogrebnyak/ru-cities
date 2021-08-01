@@ -8,7 +8,6 @@ df = pd.read_csv("towns.csv")
 
 # %%
 df = pd.read_csv("towns.csv")
-df.groupby("city").count().query("population>1")
 
 #%%
 # Города с повторяющимися названиями
@@ -17,5 +16,7 @@ df.groupby("city").count().query("population>1")
 # Три раза Советск
 df[df.duplicated(["city"], keep=False)].sort_values("city")
 
+# %%
+df.groupby("city").count().query("population>1")
 
 # %%

@@ -41,7 +41,7 @@ df2 = df.merge(
 print(df2.columns)
 
 # %%
-# Fix Нарьян-Мар 
+# Fix Нарьян-Мар
 ix = df2[df2.city == "Нарьян-Мар"].index[0]
 df2.loc[ix, "lat"] = 67.63777777777779
 df2.loc[ix, "lon"] = 53.00666666666667

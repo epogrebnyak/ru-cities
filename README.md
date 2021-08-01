@@ -35,7 +35,7 @@ print(df.sample(5))
 
 Basic info:
 
-- `city_name`
+- `city`
 - `population` - city population, thousand people, Rosstat estimate as of 1.1.2020
 - `lat,lon` - city geographic coordinates 
 
@@ -96,6 +96,7 @@ To be added:
 - Draw a map of Russian towns
 - SDEK tags for city names
 - Large municipalities (Сестрорецк, Щербинка)
+
 
 ## Tests
 
