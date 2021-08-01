@@ -1,6 +1,6 @@
 # %%
 import pandas as pd
-from krasnodar.krasnodar import (
+from krasnodar.main import (
     docx_files,
     extract,
     n_cities,

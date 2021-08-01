@@ -2,7 +2,7 @@
 
 #%%
 import pandas as pd
-from krasnodar.krasnodar import yield_full_population
+from krasnodar.main import yield_full_population
 from tqdm import tqdm
 
 gen = tqdm(yield_full_population("rar"))
@@ -22,11 +22,9 @@ df["lon"] = None
 #%%
 # create regions.csv
 import csv
+
 df[["region_name"]].drop_duplicates().sort_values("region_name").to_csv(
-    "regions.csv", 
-    header=False, 
-    index=False,
-    quoting=csv.QUOTE_ALL
+    "regions.csv", header=False, index=False, quoting=csv.QUOTE_ALL
 )
 
 # %%

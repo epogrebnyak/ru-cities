@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 
 import pandas as pd
-from krasnodar import (
+from krasnodar.main import (
     add_after,
     docx_files,
     extract,
@@ -17,17 +17,15 @@ from krasnodar import (
 )
 from reference import cities_2010, region_list
 
+
 url = "https://gks.ru/bgd/regl/b20_14t/IssWWW.exe/Stg/ug/krasnod.docx"
 path = save(url)
 
-base = Path(os.path.dirname(__file__))
+base = Path(__file__).resolve().parent
 text_msk = (base / "msk.txt").read_text(encoding="utf-8")
-
-df = pd.read_csv(base / "towns.csv")
-
+df = pd.read_csv(base.parent / "towns.csv")
 
 #%%
-# TODO: переделать в тест
 def test_df_fornull():
     assert len(df[df.population.isna()]) == 0
     assert len(df[df.population == 0]) == 0

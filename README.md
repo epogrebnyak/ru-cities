@@ -35,3 +35,10 @@ To be added (via dadata.ru and OSM):
 - `Ханты-Мансийский` and `Ямало-Ненецкий` autonomous regions excluded to avoid duplication
   (parts of `Тюменская область`).
 - Several notable towns are classified as administrative part of larger cities (eg `Сестрорецк` is a municpality at  `Санкт-Петербург`) and not reported in this dataset.
+
+## Tests
+
+```
+poetry install
+poetry run python -m pytest
+```
