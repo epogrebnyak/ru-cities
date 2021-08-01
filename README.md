@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5148693.svg)](https://doi.org/10.5281/zenodo.5148693)
 
-1117 Russian cities with population estimates (as of January 1, 2020) and geographic coordinates.
+1117 Russian cities (city name, region, 2020 population estimate and geographic coordinates).
 
 ## Files and columns
 
