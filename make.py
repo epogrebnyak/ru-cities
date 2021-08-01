@@ -2,22 +2,12 @@
 
 #%%
 import pandas as pd
-from krasnodar.main import yield_full_population
 from tqdm import tqdm
+
+from krasnodar.main import yield_full_population
 
 gen = tqdm(yield_full_population("rar"))
 df = pd.DataFrame(gen, columns=["city", "population", "region_name"])
-df["lat"] = None
-df["lon"] = None
-
-# WAIT: retrieve fileds from dadata
-#       condition - make sure proxy region matches 'region_iso_code'
-#       (will violate if 2 cities have same name)
-# This shoudl come from dadata
-# df["federal_district"] = None
-# df["region_iso_code"] = None
-# df["fias_id"] = None
-# df["kladr_id"] = None
 
 #%%
 df.sort_values(["region_name", "city"]).to_csv("towns.csv", index=False)

@@ -13,12 +13,13 @@ dadata = Dadata(token, secret)
 
 #%%
 
+
 def clean(s):
     return dadata.clean("address", s)
 
 
 def geocode(city, region=""):
-    query = city + ", " + region
+    query = "город " + city + ", " + region
     res = dadata.clean("address", query)
     fields = [
         "city",
@@ -32,7 +33,7 @@ def geocode(city, region=""):
         "oktmo",
         "kladr_id",
         "fias_id",
-        "unparsed_parts"
+        "unparsed_parts",
     ]
     out = {f: res[f] for f in fields}
     out["query_city"] = city
@@ -54,17 +55,16 @@ if __name__ == "__main__":
     # %%
 
     # dadata.clean("address", "Советск")
-    #dadata.clean("address", "Советск Калининградская область")
+    # dadata.clean("address", "Советск Калининградская область")
     clean("город Дубна, Московская область")
-    
+
     # %%
     dadata.clean("address", "Дубна, Московская область")
     geocode("город Дубна, Московская область")
-    
-    # %% 
+
+    # %%
     x = geocode("Советск", "Калининградская область")
     assert x["query_region"].split()[0] == x["region"]
     x
-
 
     # %%

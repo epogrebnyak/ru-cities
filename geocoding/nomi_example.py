@@ -1,6 +1,7 @@
 # %%
 
 import time
+
 from OSMPythonTools.nominatim import Nominatim
 
 nominatim = Nominatim()
@@ -15,7 +16,7 @@ def query(s):
 
 
 def get_city_jsons(city, region):
-    xs = query(city + " "  + region)
+    xs = query(city + " " + region)
     return [x for x in xs if is_town(x)]
 
 
@@ -38,7 +39,11 @@ def osm(city, region=""):
 if __name__ == "__main__":
 
     # %%
-    assert osm("Ноябрьск, Тюменская область") == {'place_id': None, 'lat': None, 'lon': None}
+    assert osm("Ноябрьск, Тюменская область") == {
+        "place_id": None,
+        "lat": None,
+        "lon": None,
+    }
     # %%
     assert osm("Наро-Фоминск") == {
         "place_id": 258768837,
@@ -65,6 +70,9 @@ if __name__ == "__main__":
     ]
     # %%
     # zs = nominatim.query("Сестрорецк, Россия")
-    assert "Санкт-Петербург" in nominatim.query("Сестрорецк, Россия").toJSON()[0]['display_name']
+    assert (
+        "Санкт-Петербург"
+        in nominatim.query("Сестрорецк, Россия").toJSON()[0]["display_name"]
+    )
 
     # %%

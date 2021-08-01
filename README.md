@@ -26,24 +26,38 @@ df = pd.read_csv("towns.csv")
 print(df.sample(5))
 ```
 
-## Files and columns
+## Files:
 
-1. towns.csv:
+- `towns.csv` - city information
+- `regions.csv` - list of Russian Federation regions
+
+## Сolumns (towns.csv):
+
+Basic info:
 
 - `city_name`
 - `population` - city population, thousand people, Rosstat estimate as of 1.1.2020
+- `lat,lon` - city geographic coordinates 
+
+Region:
+
 - `region_name` - subnational region (oblast, republic, krai or AO)
-
-To be added (via dadata.ru and OSM):
-
-- `lat,lon` - city geographic coordinates (from OSM)
-- `federal_district`, eg `Центральный`
 - `region_iso_code` - [ISO 3166 code](https://en.wikipedia.org/wiki/ISO_3166-2:RU), eg `RU-VLD`
-- `fias_id` - `код ФИАС`
-- `kladr_id` - `код КЛАДР` (depreciated)
-- `place_id` - OpenStreetMap (OSM) identifier
+- `federal_district`, eg `Центральный`
 
-2. regions.csv - list of Russian Federation regions
+City codes:
+
+- `okato` 
+- `oktmo` 
+- `fias_id` 
+- `kladr_id`  (depreciated)
+
+To be added:
+
+- `place_id` - OpenStreetMap (OSM) identifier
+- `is_region_capital` - boolean flag (0 or 1)
+- `city_alt_name`
+
 
 ## Sources
 
@@ -72,7 +86,6 @@ To be added (via dadata.ru and OSM):
 
 - `Дмитриев` and `Дмитриев-Льговский` are the same city.
 
-
 ## Next
 
 - Maybe we should have `city_alt_name` for cases where there are two variants of a city name 
@@ -81,6 +94,8 @@ To be added (via dadata.ru and OSM):
 - Merge OSM `place_id` to dataset 
 - Rename `towns.csv` to `cities.csv`
 - Draw a map of Russian towns
+- SDEK tags for city names
+- Large municipalities (Сестрорецк, Щербинка)
 
 ## Tests
 
@@ -91,6 +106,32 @@ poetry run python -m pytest
 
 ## How to replicate dataset
 
+#### Base dataset
+
+Run:
+
 - download rar/get.sh
 - convert `Саратовская область.doc` to docx
 - run make.py
+
+Creates:
+
+- towns.csv
+- regions.csv
+
+#### Full dataset
+
+Note: do not attempt if you do not have to -
+this runs a while and loads third-party API access. 
+
+Run:
+
+- run coord_dadata.py (needs token)
+- run coord_osm.py
+- run merge.py
+
+Creates:
+
+- coord_dadata.csv
+- coord_osm.csv
+- towns.csv (overwrites towns.csv with more columns)

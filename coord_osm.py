@@ -1,11 +1,12 @@
-
 #%%
-from geocoding.nomi_example import osm
-from tqdm import tqdm
 import pandas as pd
+from tqdm import tqdm
+
+from geocoding.nomi_example import osm
 
 #%%
 df = pd.read_csv("towns.csv")
+
 
 def iterate(df, n=0):
     gen = df[["city", "region_name"]]
@@ -13,6 +14,7 @@ def iterate(df, n=0):
         gen = gen.sample(n)
     for _, (city, region_name) in tqdm(gen.iterrows()):
         yield city, region_name
+
 
 out = []
 n = 0

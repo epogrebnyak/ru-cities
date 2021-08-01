@@ -4,6 +4,8 @@ import os
 from pathlib import Path
 
 import pandas as pd
+from reference import cities_2010, region_list
+
 from krasnodar.main import (
     add_after,
     docx_files,
@@ -15,8 +17,6 @@ from krasnodar.main import (
     save,
     split,
 )
-from reference import cities_2010, region_list
-
 
 url = "https://gks.ru/bgd/regl/b20_14t/IssWWW.exe/Stg/ug/krasnod.docx"
 path = save(url)

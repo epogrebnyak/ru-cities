@@ -1,14 +1,15 @@
 #%%
 import pandas as pd
 from tqdm import tqdm
+
 from geocoding.dadata_example import geocode
 
 #%%
 df = pd.read_csv("towns.csv")
 gen = df[["city", "region_name"]]
-res = [] 
+res = []
 for _, (city, region_name) in tqdm(gen.iterrows()):
-    x = geocode("город" + city, region_name)
+    x = geocode(city, region_name)
     res.append(x)
 
 mf = pd.DataFrame(res)

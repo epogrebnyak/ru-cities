@@ -18,5 +18,4 @@ df.groupby("city").count().query("population>1")
 df[df.duplicated(["city"], keep=False)].sort_values("city")
 
 
-
 # %%
