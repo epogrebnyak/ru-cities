@@ -20,11 +20,17 @@ df["lon"] = None
 # df["kladr_id"] = None
 
 #%%
+df.sort_values(["region_name", "city"]).to_csv("towns.csv", index=False)
+print("Created towns.csv")
+
+
+#%%
 # create regions.csv
 import csv
 
 df[["region_name"]].drop_duplicates().sort_values("region_name").to_csv(
     "regions.csv", header=False, index=False, quoting=csv.QUOTE_ALL
 )
+print("Created regions.csv")
 
 # %%
