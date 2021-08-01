@@ -2,11 +2,29 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5148693.svg)](https://doi.org/10.5281/zenodo.5148693)
 
-1117 Russian cities with population estimates (as of January 1, 2020) and geographic coordinates.
+1117 Russian cities with city name, region, 
+geographic coordinates and 2020 population estimate.
 
 ## How to use
 
+```python 
+from pathlib import Path
+import requests
+import pandas as pd
 
+url = ("https://raw.githubusercontent.com/"
+      "epogrebnyak/ru-cities/main/towns.csv")
+
+# save file locally
+p = Path("towns.csv")
+if not p.exists():
+    content = requests.get(url).text
+    p.write_text(content, encoding="utf-8")
+
+# read as dataframe
+df = pd.read_csv("towns.csv")
+print(df.sample(5))
+```
 
 ## Files and columns
 
@@ -71,4 +89,8 @@ poetry install
 poetry run python -m pytest
 ```
 
-## How to replicate
+## How to replicate dataset
+
+- download rar/get.sh
+- convert `Саратовская область.doc` to docx
+- run make.py

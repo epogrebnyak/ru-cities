@@ -2,6 +2,7 @@
 *.doc
 *.docx
 cache/
+!5.14_Саратовская обл.docx
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
