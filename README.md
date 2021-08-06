@@ -53,23 +53,11 @@ City codes:
 - `fias_id` 
 - `kladr_id`
 
-To be added:
-
-- `place_id` - OpenStreetMap (OSM) identifier
-- `is_region_capital` - boolean flag (0 or 1)
-- `city_alt_name`
-
-
-## Sources
-
+## Data sources
 
 - City list and city population collected from Rosstat publication [Регионы России. Основные социально-экономические показатели городов](https://rosstat.gov.ru/folder/210/document/13206) and parsed from publication Microsoft Word files.
 - City list corresponds to [this Wikipedia article](https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%BE%D0%B2_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8).
-
-Alternative: 
-
-- [Dadata city dataset, wiki-based](https://github.com/hflabs/city) (no population data).
-
+- Alternative dataset is [wiki-based Dadata city dataset](https://github.com/hflabs/city) (no population data).
 
 ## Comments
 
@@ -82,7 +70,6 @@ Alternative:
 #### By individual city
 
 - `Белоозерский` not found in Rosstat publication, but [should be considered a city as of 1.1.2020](https://github.com/epogrebnyak/ru-cities/issues/5#issuecomment-886179980)
-
 
 #### Alternative city names
 
@@ -117,8 +104,8 @@ Run:
 
 Creates:
 
-- _towns.csv
-- regions.csv
+- `_towns.csv`
+- `assets/regions.csv`
 
 #### 2. API calls
 
@@ -129,6 +116,7 @@ so probably does not need to  these scripts.
 
 Run:
 
+- `cd geocoding`
 - run coord_dadata.py (needs token)
 - run coord_osm.py
 
@@ -145,4 +133,4 @@ Run:
 
 Creates:
 
-- towns.csv (overwrites towns.csv with more columns)
+- assets/towns.csv
