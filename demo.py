@@ -22,6 +22,18 @@ df[df.duplicated(["city"], keep=False)].sort_values("city")
 # %%
 df.groupby("city").count().query("population>1")
 
+
+# %%
+
+# %%
+# TODO: mark region capitals
+# TODO: mark MOW, SPB, SEV as capitals too
+cf = pd.read_csv("coord_dadata.csv")
+ix = ~cf.capital_marker.isin([1, 0])
+ix2 = ~cf.isna()
+caps = cf[ix]["city query_region capital_marker".split()]
+# assert len(caps) == 82 # breaks, we have 82 regions in regions.csv and 78 in cf
+
 # %%
 # TODO: need plot that properly relects geography
 #       possibly (transform=...)

@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 
-url = "https://raw.githubusercontent.com/" "epogrebnyak/ru-cities/main/towns.csv"
+url = "https://raw.githubusercontent.com/epogrebnyak/ru-cities/main/assets/towns.csv"
 
 # save file locally
 p = Path("towns.csv")

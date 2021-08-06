@@ -6,17 +6,6 @@ df = pd.read_csv("_towns.csv")["city population region_name".split()]
 cf = pd.read_csv("coord_dadata.csv")
 # %%
 
-
-# %%
-# TODO: mark region capitals
-# TODO: mark MOW, SPB, SEV as capitals too
-
-ix = ~cf.capital_marker.isin([1, 0])
-ix2 = ~cf.isna()
-caps = cf[ix]["city query_region capital_marker".split()]
-# assert len(caps) == 82 # breaks, we have 82 regions in regions.csv and 78 in cf
-
-
 # %%
 cols = [
     "city_x",

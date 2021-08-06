@@ -28,14 +28,15 @@ print(df.sample(5))
 
 ## Files:
 
-- `towns.csv` - city information
-- `regions.csv` - list of Russian Federation regions
+- [towns.csv](assets/towns.csv) - city information
+- [regions.csv](assets/regions.csv) - list of Russian Federation regions
+- [alt_city_names.json](assets/alt_city_names.json) - several alternative city names
 
 ## Сolumns (towns.csv):
 
 Basic info:
 
-- `city`
+- `city` - city name (several cities have alternative names marked in `alt_city_names.json`)
 - `population` - city population, thousand people, Rosstat estimate as of 1.1.2020
 - `lat,lon` - city geographic coordinates 
 
@@ -74,14 +75,6 @@ Alternative:
 
 #### City groups
 
-- We suppressed letter "ё" city names - we have `Орел`, but not `Орёл`. This affected:
-  - `Белоозёрский`
-  - `Королёв`
-  - `Ликино-Дулёво`
-  - `Озёры`
-  - `Щёлково`
-  - `Орёл`
-
 - `Ханты-Мансийский` and `Ямало-Ненецкий` autonomous regions excluded to avoid duplication as parts of `Тюменская область`.
 
 - Several notable towns are classified as administrative part of larger cities (`Сестрорецк` is a municpality at  Saint-Petersburg, `Щербинка` part of Moscow). They are not and not reported in this dataset.
@@ -90,19 +83,20 @@ Alternative:
 
 - `Белоозерский` not found in Rosstat publication, but [should be considered a city as of 1.1.2020](https://github.com/epogrebnyak/ru-cities/issues/5#issuecomment-886179980)
 
+
+#### Alternative city names
+
+- We suppressed letter "ё" `city` columns in towns.csv - we have `Орел`, but not `Орёл`. This affected:
+  - `Белоозёрский`
+  - `Королёв`
+  - `Ликино-Дулёво`
+  - `Озёры`
+  - `Щёлково`
+  - `Орёл`
+
 - `Дмитриев` and `Дмитриев-Льговский` are the same city.
 
-## Next
-
-- Maybe we should have `city_alt_name` for cases where there are two variants of a city name 
-- Restore `Ханты-Мансийский` and `Ямало-Ненецкий` АО
-- Compare OSM and dadata outputs (distances form centers)
-- Merge OSM `place_id` to dataset 
-- Rename `towns.csv` to `cities.csv`
-- Draw a map of Russian towns
-- SDEK tags for city names
-- Large municipalities (Сестрорецк, Щербинка)
-
+`assets/alt_city_names.json` contains these names.
 
 ## Tests
 

@@ -16,7 +16,6 @@ filename = "_towns.csv"
 df.to_csv(filename, index=False)
 print(f"Created {filename}")
 
-
 #%%
 import csv
 from helper import local_path
@@ -29,6 +28,8 @@ print(f"Created {filename}")
 # %%
 from helper import local_path, to_json
 
+# В основе - "coord_dadata.csv" 
+# cf.city != cf.query_city
 alt_city_names = {
     "Дмитриев-Льговский": "Дмитриев",
     "Белоозерский": "Белоозёрский",
