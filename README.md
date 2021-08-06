@@ -30,7 +30,7 @@ print(df.sample(5))
 
 - [towns.csv](assets/towns.csv) - city information
 - [regions.csv](assets/regions.csv) - list of Russian Federation regions
-- [alt_city_names.json](assets/alt_city_names.json) - several alternative city names
+- [alt_city_names.json](assets/alt_city_names.json) - alternative city names
 
 ## Сolumns (towns.csv):
 
