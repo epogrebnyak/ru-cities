@@ -2,6 +2,10 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5151423.svg)](https://doi.org/10.5281/zenodo.5151423)
 
+[![](https://img.shields.io/badge/API_Crafter-ru--cities--db-blue)](https://beta.apicrafter.ru/packages/ru-cities-db)
+
+
+
 1117 Russian cities with city name, region, 
 geographic coordinates and 2020 population estimate.
 
