@@ -13,7 +13,7 @@ import requests
 import pandas as pd
 
 url = ("https://raw.githubusercontent.com/"
-      "epogrebnyak/ru-cities/main/towns.csv")
+      "epogrebnyak/ru-cities/main/assets/towns.csv")
 
 # save file locally
 p = Path("towns.csv")
