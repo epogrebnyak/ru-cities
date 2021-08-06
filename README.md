@@ -99,7 +99,7 @@ poetry run python -m pytest
 
 Run:
 
-- download data stro rar/get.sh
+- download data from Rosstat using rar/get.sh
 - convert `Саратовская область.doc` to docx
 - run make.py
 
@@ -110,8 +110,9 @@ Creates:
 
 #### 2. API calls
 
-Note: do not attempt if you do not have to - this runs a while and loads third-party API access. 
-You have the resulting files in repo, so probablyyou can skip running these scripts.
+Note: do not attempt this stage if you do not have to - these scripts take  a while 
+and use third-party API access. You have the resulting files in repo, so probably 
+you can skip running these scripts.
 
 Run:
 
