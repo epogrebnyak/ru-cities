@@ -4,6 +4,7 @@
 
 [![](https://img.shields.io/badge/API_Crafter-ru--cities--db-blue)](https://beta.apicrafter.ru/packages/ru-cities-db)
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/epogrebnyak/ru-cities?style=plastic)
 
 
 1117 Russian cities with city name, region, 
