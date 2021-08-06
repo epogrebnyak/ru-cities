@@ -7,8 +7,7 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/epogrebnyak/ru-cities?style=plastic)
 
 
-1117 Russian cities with city name, region, 
-geographic coordinates and 2020 population estimate.
+1117 Russian cities with geographic coordinates, identifiers and 2020 population estimate.
 
 ## How to use
 
