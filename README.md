@@ -111,9 +111,7 @@ Creates:
 #### 2. API calls
 
 Note: do not attempt if you do not have to - this runs a while and loads third-party API access. 
-
-You have the resulting files in repo,
-so probably does not need to  these scripts.
+You have the resulting files in repo, so probablyyou can skip running these scripts.
 
 Run:
 
