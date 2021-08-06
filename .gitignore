@@ -4,6 +4,7 @@ _towns.csv
 *.docx
 cache/
 !5.14_Саратовская обл.docx
+example/towns.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
