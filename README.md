@@ -1,9 +1,8 @@
 # ru-cities
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/epogrebnyak/ru-cities)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5151423.svg)](https://doi.org/10.5281/zenodo.5151423)
 [![](https://img.shields.io/badge/API_Crafter-ru--cities--db-blue)](https://beta.apicrafter.ru/packages/ru-cities-db)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/epogrebnyak/ru-cities?style=plastic)
-
 
 1117 Russian cities with geographic coordinates, identifiers and 2020 population estimate.
 
