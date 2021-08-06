@@ -1,11 +1,10 @@
 # %%
 import pandas as pd
 
-df = pd.read_csv("towns.csv")["city population region_name".split()]
+
+df = pd.read_csv("_towns.csv")["city population region_name".split()]
 cf = pd.read_csv("coord_dadata.csv")
 # %%
-
-cf[cf.city.str.contains("ё").fillna(False)].city
 
 
 # %%
@@ -31,14 +30,12 @@ cols = [
     "oktmo",
     "kladr_id",
     "fias_id",
-    #'capital_marker',
 ]
 
 # %%
 df2 = df.merge(
     cf, left_on=["city", "region_name"], right_on=["query_city", "query_region"]
 )[cols].rename(columns=dict(geo_lat="lat", geo_lon="lon", city_x="city"))
-print(df2.columns)
 
 # %%
 # Fix Нарьян-Мар
@@ -48,7 +45,9 @@ df2.loc[ix, "lon"] = 53.00666666666667
 df2.loc[ix]
 
 # %%
-df2.sort_values(["region_name", "city"]).to_csv("towns.csv", index=False)
-print("Overwritten towns.csv")
+from make import local_path
 
+filename = local_path("towns.csv")
+df2.sort_values(["region_name", "city"]).to_csv(filename, index=False)
+print(f"Wrote {filename}")
 # %%

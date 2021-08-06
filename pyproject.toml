@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "krasnodar"
-version = "0.3.1"
+version = "0.4.0"
 description = "Russian cities names, population and coordinates"
 authors = ["Evgeny Pogrebnyak <e.pogrebnyak@gmail.com>"]
 packages = [

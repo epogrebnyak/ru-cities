@@ -50,7 +50,7 @@ City codes:
 - `okato` 
 - `oktmo` 
 - `fias_id` 
-- `kladr_id`  (depreciated)
+- `kladr_id`
 
 To be added:
 
@@ -61,8 +61,14 @@ To be added:
 
 ## Sources
 
+
 - City list and city population collected from Rosstat publication [Регионы России. Основные социально-экономические показатели городов](https://rosstat.gov.ru/folder/210/document/13206) and parsed from publication Microsoft Word files.
 - City list corresponds to [this Wikipedia article](https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%BE%D0%B2_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8).
+
+Alternative: 
+
+- [Dadata city dataset, wiki-based](https://github.com/hflabs/city) (no population data).
+
 
 ## Comments
 
@@ -107,32 +113,42 @@ poetry run python -m pytest
 
 ## How to replicate dataset
 
-#### Base dataset
+#### 1. Base dataset
 
 Run:
 
-- download rar/get.sh
+- download data stro rar/get.sh
 - convert `Саратовская область.doc` to docx
 - run make.py
 
 Creates:
 
-- towns.csv
+- _towns.csv
 - regions.csv
 
-#### Full dataset
+#### 2. API calls
 
-Note: do not attempt if you do not have to -
-this runs a while and loads third-party API access. 
+Note: do not attempt if you do not have to - this runs a while and loads third-party API access. 
+
+You have the resulting files in repo,
+so probably does not need to  these scripts.
 
 Run:
 
 - run coord_dadata.py (needs token)
 - run coord_osm.py
-- run merge.py
 
 Creates:
 
 - coord_dadata.csv
 - coord_osm.csv
+
+#### 3. Merge data
+
+Run:
+
+- run merge.py
+
+Creates:
+
 - towns.csv (overwrites towns.csv with more columns)

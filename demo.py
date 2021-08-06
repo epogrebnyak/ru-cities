@@ -5,9 +5,12 @@ import pandas as pd
 
 df = pd.read_csv("towns.csv")
 
-
 # %%
-df = pd.read_csv("towns.csv")
+# показать города с Ё в названии
+cf = pd.read_csv("coord_dadata.csv")
+x = cf[cf.city.str.contains("ё").fillna(False)][["city", "query_city"]].rename(
+    columns=dict(city="alt_city_name")
+)
 
 #%%
 # Города с повторяющимися названиями
@@ -20,3 +23,6 @@ df[df.duplicated(["city"], keep=False)].sort_values("city")
 df.groupby("city").count().query("population>1")
 
 # %%
+# TODO: need plot that properly relects geography
+#       possibly (transform=...)
+df.plot.scatter(x="lon", y="lat", alpha=0.2)
