@@ -1,10 +1,12 @@
+"""Cоздать файл assets/towns.csv"""
 # %%
 import pandas as pd
 
 
 df = pd.read_csv("_towns.csv")["city population region_name".split()]
-cf = pd.read_csv("coord_dadata.csv")
+cf = pd.read_csv("geocoding/coord_dadata.csv")
 # %%
+
 
 # %%
 cols = [
@@ -34,7 +36,7 @@ df2.loc[ix, "lon"] = 53.00666666666667
 df2.loc[ix]
 
 # %%
-from make import local_path
+from helper import local_path
 
 filename = local_path("towns.csv")
 df2.sort_values(["region_name", "city"]).to_csv(filename, index=False)

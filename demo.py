@@ -3,11 +3,11 @@
 #%%
 import pandas as pd
 
-df = pd.read_csv("towns.csv")
+df = pd.read_csv("assets/towns.csv")
 
 # %%
 # показать города с Ё в названии
-cf = pd.read_csv("coord_dadata.csv")
+cf = pd.read_csv("geocoding/coord_dadata.csv")
 x = cf[cf.city.str.contains("ё").fillna(False)][["city", "query_city"]].rename(
     columns=dict(city="alt_city_name")
 )
@@ -28,7 +28,7 @@ df.groupby("city").count().query("population>1")
 # %%
 # TODO: mark region capitals
 # TODO: mark MOW, SPB, SEV as capitals too
-cf = pd.read_csv("coord_dadata.csv")
+cf = pd.read_csv("geocoding/coord_dadata.csv")
 ix = ~cf.capital_marker.isin([1, 0])
 ix2 = ~cf.isna()
 caps = cf[ix]["city query_region capital_marker".split()]

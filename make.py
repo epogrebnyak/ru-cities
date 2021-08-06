@@ -1,7 +1,8 @@
-"""Cоздать файлы
- _towns.csv
- assets/regions.csv
- assets/alt_region_names.json"""
+"""Cоздать файлы:
+   _towns.csv
+   assets/regions.csv
+   assets/alt_region_names.json
+"""
 
 #%%
 import pandas as pd
@@ -28,7 +29,7 @@ print(f"Created {filename}")
 # %%
 from helper import local_path, to_json
 
-# В основе - "coord_dadata.csv" 
+# В основе - "coord_dadata.csv"
 # cf.city != cf.query_city
 alt_city_names = {
     "Дмитриев-Льговский": "Дмитриев",
