@@ -122,8 +122,8 @@ Run:
 
 Creates:
 
-- coord_dadata.csv
-- coord_osm.csv
+- geocoding/coord_dadata.csv
+- geocoding/coord_osm.csv
 
 #### 3. Merge data
 
