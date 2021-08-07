@@ -29,6 +29,6 @@ df4 = pd.DataFrame(df3, columns=['lon_x', 'lat_x','lon_y',"lat_y"])
 
 df3 = df3.sort_values(by=['distance_km'],ascending=False)
 
-csv.to_csv("coord_compare.csv")
+df3.to_csv("coord_compare.csv")
 
 print("Finished! Time: " + str(round(time.time() - start_time, 2)) + "s")
