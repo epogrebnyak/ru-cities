@@ -19,16 +19,14 @@ def haversine(lon1, lat1, lon2, lat2):
 
 df1 = pd.DataFrame(data=pd.read_csv("../assets/towns.csv"), columns=['city',"region_name",'lat', 'lon'])
 df2 = pd.DataFrame(data=pd.read_csv("../geocoding/coord_osm.csv"),columns=['query_city',"query_region",'lat', 'lon'])
+
 df2 = df2.rename(columns={'query_city': 'city', "query_region" : "region_name"})
 
-df3 = df1.merge(df2[['city', 'lat', 'lon']], how='outer', on='city')
+df3 = df1.merge(df2[['city','region_name', 'lat', 'lon']], how='outer', left_on=['city','region_name'], right_on = ['city','region_name'])
 
 df3['distance_km'] = df3.apply(lambda row: haversine(row['lon_x'],row['lat_x'],row['lon_y'],row['lat_y']), axis=1)
-
-df4 = pd.DataFrame(df3, columns=['lon_x', 'lat_x','lon_y',"lat_y"])
 
 df3 = df3.sort_values(by=['distance_km'],ascending=False)
 
 df3.to_csv("coord_compare.csv")
-
 print("Finished! Time: " + str(round(time.time() - start_time, 2)) + "s")
