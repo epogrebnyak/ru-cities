@@ -8,7 +8,7 @@
 
 ## How to use
 
-```python 
+```python
 from pathlib import Path
 import requests
 import pandas as pd
@@ -39,19 +39,20 @@ Basic info:
 
 - `city` - city name (several cities have alternative names marked in `alt_city_names.json`)
 - `population` - city population, thousand people, Rosstat estimate as of 1.1.2020
-- `lat,lon` - city geographic coordinates 
+- `lat,lon` - city geographic coordinates
 
 Region:
 
-- `region_name` - subnational region (oblast, republic, krai or AO)
+- `region_name` - subnational region name: oblast, republic, krai or one AO (Chukotka)
+- `region_name_ao` - autonomous okrug (AO) name, if AO is a part of larger regions (applies to 3 AO)
 - `region_iso_code` - [ISO 3166 code](https://en.wikipedia.org/wiki/ISO_3166-2:RU), eg `RU-VLD`
 - `federal_district`, eg `Центральный`
 
 City codes:
 
-- `okato` 
-- `oktmo` 
-- `fias_id` 
+- `okato`
+- `oktmo`
+- `fias_id`
 - `kladr_id`
 
 ## Data sources
@@ -62,19 +63,34 @@ City codes:
 
 ## Comments
 
-#### City groups
+#### Autonomous regions (AO)
 
-- `Ханты-Мансийский` and `Ямало-Ненецкий` autonomous regions excluded to avoid duplication as parts of `Тюменская область`.
+There are four autonomous regions (AO) in Russia:
 
-- Several notable towns are classified as administrative part of larger cities (`Сестрорецк` is a municpality at  Saint-Petersburg, `Щербинка` part of Moscow). They are not and not reported in this dataset.
+- Ненецкий автономный округ
+- Ханты-Мансийский автономный округ - Югра
+- Чукотский автономный округ
+- Ямало-Ненецкий автономный округ
 
-#### By individual city
+`Ханты-Мансийский` and `Ямало-Ненецкий` (AO) are inner parts of `Тюменская область`.
+`Ненецкий` autonomous regions (AO) is inner part of `Архангельская область`.
+AO names above are listed in `region_name_ao` for three AO.
 
-- `Белоозерский` not found in Rosstat publication, but [should be considered a city as of 1.1.2020](https://github.com/epogrebnyak/ru-cities/issues/5#issuecomment-886179980)
+`Чукотский` AO is a stand-alone region, it is not an inner part of any region.
+`Чукотский автономный округ` is listed in `region_name` only.
+
+#### Smaller cities
+
+- Several notable towns are classified as administrative part of larger cities (`Сестрорецк` is a municpality at Saint-Petersburg, `Щербинка` is a part of larger Moscow). They are not reported in this dataset.
+
+#### Individual cities
+
+- `Белоозерский` not found in Rosstat publication, but [should be considered a city as of January 1, 2020](https://github.com/epogrebnyak/ru-cities/issues/5#issuecomment-886179980). We included it into dataset.
 
 #### Alternative city names
 
-- We suppressed letter "ё" `city` columns in towns.csv - we have `Орел`, but not `Орёл`. This affected:
+- `Дмитриев` and `Дмитриев-Льговский` are the same city.
+- We suppressed letter "ё" `city` columns in towns.csv - we have `Орел`, but not `Орёл`. This affected, for example:
   - `Белоозёрский`
   - `Королёв`
   - `Ликино-Дулёво`
@@ -82,9 +98,7 @@ City codes:
   - `Щёлково`
   - `Орёл`
 
-- `Дмитриев` and `Дмитриев-Льговский` are the same city.
-
-`assets/alt_city_names.json` contains these names.
+`assets/alt_city_names.json` contains the alternative name pairing.
 
 ## Tests
 
@@ -110,8 +124,8 @@ Creates:
 
 #### 2. API calls
 
-Note: do not attempt this stage if you do not have to - these scripts take  a while 
-and use third-party API access. You have the resulting files in repo, so probably 
+Note: do not attempt this stage if you do not have to - these scripts take a while
+and use third-party API access. You have the resulting files in repo, so probably
 you can skip running these scripts.
 
 Run:
