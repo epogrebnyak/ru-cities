@@ -79,15 +79,15 @@ def get_region_name(text):
 
 def must_exclude(path):
     excludes = [
-        "Ненецкий",
+        "Ненецкий",  # часть Астраханской области
+        "Ханты-Мансийский",  # часть Тюменской области
+        "Ямало-Ненецкий",  # часть Тюменской области
         "Саратовская",
         "Камчатский край",
         " фо",
         "Севастополь",
         "Москва",
         "Петербург",
-        "Ханты-Мансийский",
-        "Ямало-Ненецкий",
         "7.2_Республика  Алтай",
     ]
     f1 = str(path).startswith("~")
@@ -95,9 +95,23 @@ def must_exclude(path):
     return f1 or f2
 
 
+def all_docx_files(folder):
+    return Path(folder).glob("*.docx")
+
+
 def docx_files(folder):
-    for path in Path(folder).glob("*.docx"):
+    for path in all_docx_files(folder):
         if not must_exclude(path):
+            yield path
+
+
+def docx_files_ao_subordinate(folder):
+    for path in all_docx_files(folder):
+        if (
+            ("Ненецкий" in path)
+            or ("Ханты-Мансийский" in path)
+            or ("Ямало-Ненецкий" in path)
+        ):
             yield path
 
 
@@ -145,12 +159,16 @@ def change(city: str):
     return "Сергиев Посад" if city == "Сергиев-Посад" else city
 
 
-def yield_full_population(folder):
-    for path in docx_files(folder):
+def yield_from(folder, gen_func):
+    for path in gen_func(folder):
         text = process(path)
-        pop = extract(text)
-        name = get_region_name(text)
-        for city, p in pop:
-            yield change(city), p, name
-    for (city, p, region) in add_after():
-        yield city, p, region
+        region_name = get_region_name(text)
+        for city, pop in extract(text):
+            yield change(city), pop, region_name
+
+
+def yield_full_population(folder):
+    for (city, pop, region_name) in yield_from(folder, docx_files):
+        yield city, pop, region_name
+    for (city, pop, region_name) in add_after():
+        yield city, pop, region_name
