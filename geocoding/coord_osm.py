@@ -1,11 +1,19 @@
 #%%
 import pandas as pd
 from tqdm import tqdm
+from pathlib import Path
 
 from geocoding.nomi_example import osm
 
 #%%
-df = pd.read_csv("towns.csv")
+
+root = Path(__file__).parent.parent
+df = pd.read_csv(root / "_towns.csv")
+
+# FIMXE: если известен region_name_ao - используем его вместо region_name
+#        для запроса к OSM.
+# FIMXE: если в названии города есть "ё" в alt_city_name.json -
+#        используем название города с "ё".
 
 
 def iterate(df, n=0):
