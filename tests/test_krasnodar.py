@@ -1,11 +1,11 @@
 #%%
 
-import os
 from pathlib import Path
 
 import pandas as pd
 from reference import cities_2010, region_list
 
+#%%
 from krasnodar.main import (
     add_after,
     docx_files,
@@ -21,9 +21,11 @@ from krasnodar.main import (
 url = "https://gks.ru/bgd/regl/b20_14t/IssWWW.exe/Stg/ug/krasnod.docx"
 path = save(url)
 
-base = Path(__file__).resolve().parent
-text_msk = (base / "msk.txt").read_text(encoding="utf-8")
-df = pd.read_csv(base.parent / "towns.csv")
+#%%
+this_folder = Path(__file__).resolve().parent
+root = this_folder.parent
+text_msk = (this_folder / "msk.txt").read_text(encoding="utf-8")
+df = pd.read_csv(root / "assets" / "towns.csv")
 
 #%%
 def test_df_fornull():
@@ -47,13 +49,15 @@ def test_columns():
     assert df.columns.tolist() == [
         "city",
         "population",
-        "region_name",
         "lat",
         "lon",
-        "federal_district",
+        "region_name",
         "region_iso_code",
-        "fias_id",
+        "federal_district",
+        "okato",
+        "oktmo",
         "kladr_id",
+        "fias_id",
     ]
 
 
