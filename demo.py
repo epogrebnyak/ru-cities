@@ -1,9 +1,36 @@
 """Анализ датасета towns.csv"""
 
+# %%
+from krasnodar import yield_ao_population
+import pandas as pd
+
+
+af = pd.DataFrame(
+    yield_ao_population("rar"), columns=["city", "population", "region_ao_name"]
+)
+ao_to_region_dict = {
+    "Ямало-Ненецкий автономный округ": "Тюменская область",
+    "Ханты-Мансийский автономный округ – Югра": "Тюменская область",
+    "Ненецкий автономный округ": "Архангельская область",
+}
+af["region_name"] = af.region_ao_name.apply(lambda r: ao_to_region_dict[r])
+assert len(af) == (16 + 8 + 1)
+af
+
 #%%
 import pandas as pd
 
 df = pd.read_csv("assets/towns.csv")
+
+
+df.merge(
+    af[["city", "region_name", "region_ao_name"]],
+    how="left",
+    left_on=["city", "region_name"],
+    right_on=["city", "region_name"],
+)
+
+# assert 0 == len(merged[merged.population_x != merged.population_y])
 
 # %%
 # показать города с Ё в названии

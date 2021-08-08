@@ -107,10 +107,11 @@ def docx_files(folder):
 
 def docx_files_ao_subordinate(folder):
     for path in all_docx_files(folder):
+        path_str = str(path)
         if (
-            ("Ненецкий" in path)
-            or ("Ханты-Мансийский" in path)
-            or ("Ямало-Ненецкий" in path)
+            ("Ненецкий" in path_str)
+            or ("Ханты-Мансийский" in path_str)
+            or ("Ямало-Ненецкий" in path_str)
         ):
             yield path
 
@@ -171,4 +172,14 @@ def yield_full_population(folder):
     for (city, pop, region_name) in yield_from(folder, docx_files):
         yield city, pop, region_name
     for (city, pop, region_name) in add_after():
+        yield city, pop, region_name
+
+
+def yield_ao_population(folder):
+    for (city, pop, region_name) in yield_from(folder, docx_files_ao_subordinate):
+        if city == "Ненецкий автономный округ":  # stub / костыль
+            continue
+        if city == "Нарьян-Мар":
+            yield "Нарьян-Мар", 25.1, "Ненецкий автономный округ"
+            continue
         yield city, pop, region_name

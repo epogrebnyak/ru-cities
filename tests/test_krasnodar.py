@@ -16,6 +16,7 @@ from krasnodar.main import (
     process,
     save,
     split,
+    yield_ao_population,
 )
 
 url = "https://gks.ru/bgd/regl/b20_14t/IssWWW.exe/Stg/ug/krasnod.docx"
@@ -24,6 +25,7 @@ path = save(url)
 #%%
 this_folder = Path(__file__).resolve().parent
 root = this_folder.parent
+rar_folder = root / "rar"
 text_msk = (this_folder / "msk.txt").read_text(encoding="utf-8")
 df = pd.read_csv(root / "assets" / "towns.csv")
 
@@ -52,6 +54,7 @@ def test_columns():
         "lat",
         "lon",
         "region_name",
+        "region_name_ao",
         "region_iso_code",
         "federal_district",
         "okato",
@@ -130,8 +133,14 @@ def test_get_population():
 
 
 def test_city_count():
-    for path in docx_files("rar"):
-        text = process(path)
-        n = n_cities(text)
-        pop = extract(text)
-        assert len(pop) == n
+    if rar_folder.exists():
+        for path in docx_files(rar_folder):
+            text = process(path)
+            n = n_cities(text)
+            pop = extract(text)
+            assert len(pop) == n
+
+
+def test_ao_cities_count():
+    if rar_folder.exists():
+        assert (16 + 8 + 1) == len(pd.DataFrame(yield_ao_population(rar_folder)))

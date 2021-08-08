@@ -3,7 +3,7 @@
 import pandas as pd
 
 
-df = pd.read_csv("_towns.csv")["city population region_name".split()]
+df = pd.read_csv("_towns.csv")
 cf = pd.read_csv("geocoding/coord_dadata.csv")
 # %%
 
@@ -15,6 +15,7 @@ cols = [
     "geo_lat",
     "geo_lon",
     "region_name",
+    "region_name_ao",
     "region_iso_code",
     "federal_district",
     "okato",
