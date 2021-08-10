@@ -15,14 +15,10 @@ def query(s):
     return nominatim.query(s).toJSON()
 
 
-def get_city_jsons(city, region, region_name_ao):
-
-    if region_name_ao != "":
-        xs = query(city + " " + region_name_ao)
-        return [x for x in xs if is_town(x)]
-
+def get_city_jsons(city, region):
     xs = query(city + " " + region)
     return [x for x in xs if is_town(x)]
+
 
 def one_json(js):
     if len(js) > 1:
@@ -34,9 +30,9 @@ def one_json(js):
     return {field: j[field] for field in fields}
 
 
-def osm(city, region="", region_name_ao =""):
+def osm(city, region=""):
     time.sleep(1)
-    return one_json(get_city_jsons(city, region, region_name_ao))
+    return one_json(get_city_jsons(city, region))
 
 
 #%%
