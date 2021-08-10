@@ -11,7 +11,7 @@ df = pd.read_csv(root / "geocoding" / "coord_osm.csv").rename(columns={"query_ci
 
 df2 = pd.read_csv(root / "assets" / "towns.csv")
 
-# print(df[df.place_id.isna()])
+print(df[df.place_id.isna()])
 
 # TODO (Михаил, MT):
 # https://github.com/epogrebnyak/ru-cities/issues/10
@@ -23,11 +23,9 @@ df2 = pd.read_csv(root / "assets" / "towns.csv")
 # - [x] посмотерть что осталось в df[df.place_id.isna()]
 # - [x] добавить place_id в towns.csv
 
-df3 = pd.merge(
-    df2,df[["city", "place_id"]], on="city"
-)
+df2['place_id'] = df['place_id']
+df2.to_csv(root / "assets" / "towns.csv", index=False)
 
-df3.to_csv(root / "assets" / "towns.csv", index=False)
 
 from nomi_example import osm
 

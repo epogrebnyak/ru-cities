@@ -18,6 +18,7 @@ alt_cities = json.loads(alt_cities)
 # FIMXE: [x] если в названии города есть "ё" в alt_city_name.json -
 #        используем название города с "ё".
 
+
 def check_city(city):
     if city in alt_cities:
         return alt_cities[city]
@@ -46,7 +47,7 @@ def iterate(df, n=0):
 out = []
 n = 0
 for city, region_name in iterate(df, n):
-    print(city, region_name)
+    # print(city, region_name)
     resp = osm(city, region_name)
     resp["query_city"] = city
     resp["query_region"] = region_name

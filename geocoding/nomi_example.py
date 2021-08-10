@@ -31,7 +31,8 @@ def one_json(js):
 
 
 def osm(city, region=""):
-    time.sleep(1)
+    # time.sleep(1)
+    print(city,region)
     return one_json(get_city_jsons(city, region))
 
 
@@ -56,6 +57,13 @@ if __name__ == "__main__":
         "place_id": 259088952,
         "lat": "50.290527",
         "lon": "127.527161",
+    }
+
+    # %%
+    assert osm("Приморск", "Калининградская область") == {
+        "place_id": 309702734,
+        "lon": "54.7301946",
+        "lat": "20.0044301",
     }
 
     # %%
