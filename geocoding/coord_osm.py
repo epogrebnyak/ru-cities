@@ -9,18 +9,18 @@ from geocoding.nomi_example import osm
 root = Path(__file__).parent.parent
 df = pd.read_csv(root / "_towns.csv")
 
+alt_cities = Path(root / "assets" / "alt_city_names.json").read_text(encoding="utf-8")
+alt_cities = json.loads(alt_cities)
+
+
 # FIMXE: [x] если известен region_name_ao - используем его вместо region_name
 #        для запроса к OSM.
 # FIMXE: [x] если в названии города есть "ё" в alt_city_name.json -
 #        используем название города с "ё".
 
-with open( root / "assets" / "alt_city_names.json", 'r', encoding='utf-8') as f:
-    data = json.load(f)
-
 def check_city(city):
-
-    if city in data:
-        return data[city]
+    if city in alt_cities:
+        return alt_cities[city]
     return city
 
 def check_region(region_name,region_name_ao):
@@ -51,8 +51,6 @@ for city, region_name in iterate(df, n):
     resp["query_city"] = city
     resp["query_region"] = region_name
     out.append(resp)
-
-f.close()
 
 of = pd.DataFrame(out)
 if n == 0:

@@ -23,12 +23,11 @@ df2 = pd.read_csv(root / "assets" / "towns.csv")
 # - [x] посмотерть что осталось в df[df.place_id.isna()]
 # - [x] добавить place_id в towns.csv
 
-
 df3 = pd.merge(
     df2,df[["city", "place_id"]], on="city"
 )
 
-df3.to_csv(root / "assets" / "towns.csv")
+df3.to_csv(root / "assets" / "towns.csv", index=False)
 
 from nomi_example import osm
 
