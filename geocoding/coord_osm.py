@@ -2,21 +2,18 @@
 import pandas as pd
 from tqdm import tqdm
 from pathlib import Path
-import json
+from helper import read_json
 from geocoding.nomi_example import osm
 
 #%%
-root = Path(__file__).parent.parent
-df = pd.read_csv(root / "_towns.csv")
-
-alt_cities = Path(root / "assets" / "alt_city_names.json").read_text(encoding="utf-8")
-alt_cities = json.loads(alt_cities)
-
-
 # FIMXE: [x] если известен region_name_ao - используем его вместо region_name
 #        для запроса к OSM.
 # FIMXE: [x] если в названии города есть "ё" в alt_city_name.json -
 #        используем название города с "ё".
+
+root = Path(__file__).parent.parent
+df = pd.read_csv(root / "_towns.csv")
+alt_cities = read_json(Path(root / "assets" / "alt_city_names.json"))
 
 
 def check_city(city):
@@ -30,7 +27,6 @@ def check_region(region_name,region_name_ao):
         return region_name
     except ValueError:
         return region_name_ao
-
 
 def iterate(df, n=0):
     gen = df[["city", "region_name", "region_name_ao"]]
@@ -56,4 +52,3 @@ for city, region_name in iterate(df, n):
 of = pd.DataFrame(out)
 if n == 0:
     of.to_csv("coord_osm.csv")
-
